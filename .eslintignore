@@ -1,0 +1,15 @@
+# 构建目录
+dist
+node_modules
+
+# 配置文件
+.eslintrc.js
+babel.config.js
+vue.config.js
+
+# 其他文件
+*.sh
+*.md
+*.svg
+*.ttf
+*.woff 
