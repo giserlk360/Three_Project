@@ -1,6 +1,6 @@
-# Three.js 学习项目
+# Three.js 项目
 
-这是一个基于 Vue 3 + Vite 的 Three.js 学习项目，旨在通过一系列实例展示 Three.js 的基础知识和进阶用法。
+这是一个基于 Vue 3 + Vite 的 Three.js 项目，旨在通过一系列实例展示 Three.js 的基础知识和进阶用法。
 
 ## 项目特点
 
@@ -42,8 +42,8 @@
 
 1. 克隆仓库
 ```bash
-git clone https://github.com/yourusername/three-study.git
-cd three-study
+git clone https://github.com/giserlk360/Three_Project.git
+cd Three_Project
 ```
 
 2. 安装依赖
@@ -81,25 +81,6 @@ three-study/
 ├── index.html          # HTML模板
 └── vite.config.js      # Vite配置
 ```
-
-## 使用方法
-
-1. 首页提供了所有示例的入口，点击卡片进入对应示例
-2. 每个示例页面包含：
-   - 场景说明（解释当前示例的功能和实现方式）
-   - 3D 渲染画布（显示 Three.js 效果）
-   - 控制面板（调整参数，观察效果变化）
-   - 返回首页链接（回到主页）
-
-## 贡献指南
-
-欢迎对本项目做出贡献！如果你想参与，请：
-
-1. Fork 本仓库
-2. 创建你的特性分支 (`git checkout -b feature/amazing-feature`)
-3. 提交你的更改 (`git commit -m 'Add some amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 开启一个 Pull Request
 
 ## 许可证
 
