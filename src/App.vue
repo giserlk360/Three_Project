@@ -19,7 +19,9 @@ const menuGroups = [
       { name: '几何体', path: '/geometry' },
       { name: '材质', path: '/material' },
       { name: '光源', path: '/light' },
-      { name: '相机', path: '/camera' }
+      { name: '相机', path: '/camera' },
+      { name: '动画', path: '/animation' },
+      { name: '物理引擎', path: '/physics' }
     ]
   },
   {
@@ -28,9 +30,7 @@ const menuGroups = [
     isDropdown: true,
     isOpen: false,
     links: [
-      { name: '动画效果', path: '/animation' },
-      { name: '物理引擎', path: '/physics' },
-      { name: '交互控制', path: '/interactive' }
+
     ]
   },
   {
@@ -130,7 +130,7 @@ const closeAllDropdowns = () => {
 
               <!-- 下拉菜单 -->
               <div v-if="group.isDropdown" class="dropdown-menu" :class="{ visible: group.isOpen }">
-                <div class="menu-header">{{ group.title }}</div>
+                <!-- <div class="menu-header">{{ group.title }}</div> -->
                 <router-link v-for="link in group.links" :key="link.path" :to="link.path" class="menu-item"
                   :class="{ active: isActive(link.path) }" @click="closeAllDropdowns">
                   <div class="menu-item-title">{{ link.name }}</div>
@@ -281,11 +281,10 @@ nav {
     position: absolute;
     top: 100%;
     left: 50%;
-    min-width: 180px;
+    min-width: 130px;
     background: white;
     border-radius: 8px;
     box-shadow: var(--menu-shadow);
-    padding: 0.75rem 0;
     z-index: 10;
     opacity: 0;
     visibility: hidden;
@@ -295,7 +294,7 @@ nav {
     &.visible {
       opacity: 1;
       visibility: visible;
-      transform: translateX(-50%) translateY(10px);
+      transform: translateX(-50%) translateY(15px);
     }
 
     &::before {
@@ -320,7 +319,7 @@ nav {
 
     .menu-item {
       display: block;
-      padding: 0.75rem 1.25rem;
+      padding: 0.25rem 0.5rem;
       text-decoration: none;
       color: var(--text-color);
       transition: background-color 0.2s;

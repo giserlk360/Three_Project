@@ -4,7 +4,7 @@ import Geometry from "../views/base/Geometry.vue";
 import Material from "../views/base/Material.vue";
 import Light from "../views/base/Light.vue";
 import Camera from "../views/base/Camera.vue";
-import Animation from "../views/combat/Animation.vue";
+import Animation from "../views/base/Animation.vue";
 import Admin from "../views/tool/Admin.vue";
 
 const routes = [
@@ -41,7 +41,7 @@ const routes = [
   {
     path: "/physics",
     name: "Physics",
-    component: () => import("../views/combat/Physics.vue"),
+    component: () => import("../views/base/Physics.vue"),
   },
   {
     path: "/admin",
