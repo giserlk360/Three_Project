@@ -1,0 +1,18 @@
+{
+  "name": "three-project-server",
+  "version": "1.0.0",
+  "description": "Node.js后台服务，使用NeDB存储Three.js项目数据",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nedb": "^1.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -74,7 +74,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import { api } from '../api/mock';
+import { api } from '../api/api';
 
 const router = useRouter();
 const allCards = ref([]);

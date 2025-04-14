@@ -5,6 +5,7 @@
         <!-- 添加新卡片按钮 -->
         <div class="actions">
             <button class="btn reset-btn" @click="confirmReset">重置数据</button>
+            <button class="btn compact-btn" @click="confirmCompact">压缩数据库</button>
             <button class="btn add-btn" @click="showCardForm(null)">添加新卡片</button>
         </div>
 
@@ -128,18 +129,37 @@
                 </div>
             </div>
         </div>
+
+        <!-- 压缩确认对话框 -->
+        <div class="modal" v-if="showCompactModal">
+            <div class="modal-content delete-modal">
+                <div class="modal-header">
+                    <h2>确认压缩数据库</h2>
+                    <button class="close-btn" @click="showCompactModal = false">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>您确定要压缩数据库吗？</p>
+                    <p>这将清理已删除的记录，减小数据库文件大小。</p>
+                    <div class="form-actions">
+                        <button type="button" class="btn cancel-btn" @click="showCompactModal = false">取消</button>
+                        <button type="button" class="btn compact-btn" @click="compactDatabase">确认压缩</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
-import { api } from '../../api/mock';
+import { api } from '../../api/api';
 
 // 状态和数据
 const cards = ref([]);
 const showModal = ref(false);
 const showDeleteModal = ref(false);
 const showResetModal = ref(false);
+const showCompactModal = ref(false);
 const isEditing = ref(false);
 const cardToDelete = ref(null);
 const formData = reactive({
@@ -250,11 +270,26 @@ const resetData = async () => {
         await api.resetData();
         await loadCards();
         showResetModal.value = false;
-        // 重置后需刷新页面
-        window.location.reload();
     } catch (error) {
         console.error('重置数据失败:', error);
         alert('重置数据失败，请稍后重试');
+    }
+};
+
+// 确认压缩对话框
+const confirmCompact = () => {
+    showCompactModal.value = true;
+};
+
+// 压缩数据库
+const compactDatabase = async () => {
+    try {
+        await api.compactDatabase();
+        alert('数据库压缩成功');
+        showCompactModal.value = false;
+    } catch (error) {
+        console.error('压缩数据库失败:', error);
+        alert('压缩数据库失败，请稍后重试');
     }
 };
 
@@ -442,6 +477,15 @@ $planned-color: #999;
 
         &:hover {
             background-color: color.scale($primary-color, $lightness: -10%);
+        }
+    }
+
+    &.compact-btn {
+        background-color: #8e44ad;
+        color: white;
+
+        &:hover {
+            background-color: color.scale(#8e44ad, $lightness: -10%);
         }
     }
 }
