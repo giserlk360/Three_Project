@@ -10,29 +10,29 @@ const menuGroups = [
     path: '/',
     isDropdown: false
   },
-  {
-    title: '基础',
-    icon: '📐',
-    isDropdown: true,
-    isOpen: false,
-    links: [
-      { name: '几何体', path: '/geometry' },
-      { name: '材质', path: '/material' },
-      { name: '光源', path: '/light' },
-      { name: '相机', path: '/camera' },
-      { name: '动画', path: '/animation' },
-      { name: '物理引擎', path: '/physics' }
-    ]
-  },
-  {
-    title: '实战',
-    icon: '🚀',
-    isDropdown: true,
-    isOpen: false,
-    links: [
+  // {
+  //   title: '基础',
+  //   icon: '📐',
+  //   isDropdown: true,
+  //   isOpen: false,
+  //   links: [
+  //     { name: '几何体', path: '/geometry' },
+  //     { name: '材质', path: '/material' },
+  //     { name: '光源', path: '/light' },
+  //     { name: '相机', path: '/camera' },
+  //     { name: '动画', path: '/animation' },
+  //     { name: '物理引擎', path: '/physics' }
+  //   ]
+  // },
+  // {
+  //   title: '实战',
+  //   icon: '🚀',
+  //   isDropdown: true,
+  //   isOpen: false,
+  //   links: [
 
-    ]
-  },
+  //   ]
+  // },
   {
     title: '工具',
     icon: '🔧',

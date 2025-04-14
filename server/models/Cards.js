@@ -15,7 +15,7 @@ const defaultCards = [
     description:
       "学习Three.js的基础知识，包括创建场景、相机、渲染器和基本几何体，探索不同的3D形状。",
     path: "/base/geometry",
-    date: "2023-01-15",
+    date: "2025-01-15",
     status: "completed",
     color: "#42b883",
   },
@@ -24,7 +24,7 @@ const defaultCards = [
     title: "材质",
     description: "深入了解Three.js中的各种材质，创建逼真的3D效果和表面属性。",
     path: "/base/material",
-    date: "2023-02-10",
+    date: "2025-02-10",
     status: "completed",
     color: "#3498db",
   },
@@ -34,7 +34,7 @@ const defaultCards = [
     description:
       "学习如何使用不同类型的相机和控制器，实现交互式3D场景浏览和视角调整。",
     path: "/base/camera",
-    date: "2023-03-05",
+    date: "2025-03-05",
     status: "completed",
     color: "#e74c3c",
   },
@@ -44,7 +44,7 @@ const defaultCards = [
     description:
       "掌握Three.js中的各种光源类型，包括环境光、点光源、方向光和聚光灯，创建真实的光影效果。",
     path: "/base/light",
-    date: "2023-04-12",
+    date: "2025-04-12",
     status: "completed",
     color: "#f39c12",
   },
@@ -54,7 +54,7 @@ const defaultCards = [
     description:
       "学习如何在Three.js中创建流畅的动画效果，控制物体的移动、旋转和缩放，实现复杂的动画序列。",
     path: "/base/animation",
-    date: "2023-05-20",
+    date: "2025-05-20",
     status: "completed",
     color: "#9b59b6",
   },
@@ -64,7 +64,7 @@ const defaultCards = [
     description:
       "将物理引擎集成到Three.js场景中，模拟真实世界的物理效果，包括重力、碰撞和弹性等物理现象。",
     path: "/base/physics",
-    date: "2023-07-08",
+    date: "2025-07-08",
     status: "in-progress",
     color: "#2c3e50",
   },
@@ -178,7 +178,7 @@ class Cards {
 
         try {
           // 压缩数据库，移除已删除的文档
-          //   await compactDatabase();
+          await compactDatabase();
 
           // 插入默认数据
           db.insert(defaultCards, (err) => {

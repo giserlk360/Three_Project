@@ -36,7 +36,7 @@
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 import * as THREE from 'three';
 // 注意：需要安装 cannon-es 包
-// import * as CANNON from 'cannon-es';
+import * as CANNON from 'cannon-es';
 
 const canvasContainer = ref(null);
 const gravity = ref(9.8);
@@ -44,8 +44,28 @@ const restitution = ref(0.7);
 
 let scene, camera, renderer;
 let animationId = null;
-// let world; // CANNON世界
+let world; // CANNON世界
 let objects = []; // 对象数组，包含Three.js对象和对应的物理对象
+
+// 初始化物理世界
+const initPhysics = () => {
+    // 创建物理世界
+    world = new CANNON.World();
+    world.gravity.set(0, -gravity.value, 0);
+    world.broadphase = new CANNON.NaiveBroadphase();
+    world.solver.iterations = 10;
+
+    // 创建地面物理对象
+    createGroundPhysics();
+
+    // 创建示例用的几个对象
+    setTimeout(() => {
+        addSphere();
+        setTimeout(() => {
+            addCube();
+        }, 500);
+    }, 500);
+};
 
 // 初始化Three.js场景
 const initThree = () => {
@@ -78,11 +98,8 @@ const initThree = () => {
     directionalLight.castShadow = true;
     scene.add(directionalLight);
 
-    // 创建地面
-    createGround();
-
-    // 初始化物理世界 (Cannon.js)
-    // initPhysics();
+    // 创建地面视觉对象
+    createGroundVisual();
 
     // 添加窗口大小调整监听器
     window.addEventListener('resize', onWindowResize);
@@ -91,27 +108,8 @@ const initThree = () => {
     animate();
 };
 
-// 初始化物理世界
-const initPhysics = () => {
-    // 由于没有安装Cannon.js，这里只是示例代码
-    /* 
-    world = new CANNON.World();
-    world.gravity.set(0, -gravity.value, 0);
-    world.broadphase = new CANNON.NaiveBroadphase();
-    world.solver.iterations = 10;
-    */
-
-    // 创建示例用的几个对象
-    setTimeout(() => {
-        addSphere();
-        setTimeout(() => {
-            addCube();
-        }, 500);
-    }, 500);
-};
-
-// 创建地面
-const createGround = () => {
+// 创建地面视觉对象
+const createGroundVisual = () => {
     // Three.js地面
     const groundGeometry = new THREE.PlaneGeometry(30, 30);
     const groundMaterial = new THREE.MeshStandardMaterial({
@@ -124,21 +122,22 @@ const createGround = () => {
     ground.receiveShadow = true;
     scene.add(ground);
 
-    // Cannon.js地面物理对象
-    /*
-    const groundShape = new CANNON.Plane();
-    const groundBody = new CANNON.Body({
-      mass: 0,
-      shape: groundShape,
-      material: new CANNON.Material({ restitution: restitution.value })
-    });
-    groundBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-    world.addBody(groundBody);
-    */
-
     // 添加网格辅助线
     const gridHelper = new THREE.GridHelper(30, 30);
     scene.add(gridHelper);
+};
+
+// 创建地面物理对象
+const createGroundPhysics = () => {
+    // Cannon.js地面物理对象
+    const groundShape = new CANNON.Plane();
+    const groundBody = new CANNON.Body({
+        mass: 0,
+        shape: groundShape,
+        material: new CANNON.Material({ restitution: restitution.value })
+    });
+    groundBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+    world.addBody(groundBody);
 };
 
 // 添加球体
@@ -163,26 +162,18 @@ const addSphere = () => {
     scene.add(sphere);
 
     // Cannon.js球体物理对象
-    /*
     const sphereShape = new CANNON.Sphere(radius);
     const sphereBody = new CANNON.Body({
-      mass: radius * 5,
-      shape: sphereShape,
-      position: new CANNON.Vec3(x, y, z),
-      material: new CANNON.Material({ restitution: restitution.value })
+        mass: radius * 5,
+        shape: sphereShape,
+        position: new CANNON.Vec3(x, y, z),
+        material: new CANNON.Material({ restitution: restitution.value })
     });
     world.addBody(sphereBody);
-    
-    objects.push({
-      mesh: sphere,
-      body: sphereBody
-    });
-    */
 
-    // 由于没有实际物理引擎，只添加视觉效果
     objects.push({
         mesh: sphere,
-        velocity: new THREE.Vector3(0, 0, 0)
+        body: sphereBody
     });
 };
 
@@ -208,26 +199,18 @@ const addCube = () => {
     scene.add(cube);
 
     // Cannon.js立方体物理对象
-    /*
-    const cubeShape = new CANNON.Box(new CANNON.Vec3(size/2, size/2, size/2));
+    const cubeShape = new CANNON.Box(new CANNON.Vec3(size / 2, size / 2, size / 2));
     const cubeBody = new CANNON.Body({
-      mass: size * 5,
-      shape: cubeShape,
-      position: new CANNON.Vec3(x, y, z),
-      material: new CANNON.Material({ restitution: restitution.value })
+        mass: size * 5,
+        shape: cubeShape,
+        position: new CANNON.Vec3(x, y, z),
+        material: new CANNON.Material({ restitution: restitution.value })
     });
     world.addBody(cubeBody);
-    
-    objects.push({
-      mesh: cube,
-      body: cubeBody
-    });
-    */
 
-    // 由于没有实际物理引擎，只添加视觉效果
     objects.push({
         mesh: cube,
-        velocity: new THREE.Vector3(0, 0, 0)
+        body: cubeBody
     });
 };
 
@@ -236,11 +219,9 @@ const reset = () => {
     // 移除所有对象
     objects.forEach(obj => {
         scene.remove(obj.mesh);
-        /*
         if (obj.body) {
-          world.removeBody(obj.body);
+            world.removeBody(obj.body);
         }
-        */
     });
     objects = [];
 };
@@ -279,18 +260,15 @@ const animate = () => {
     const delta = 0.016; // 约60fps
 
     // 更新物理世界
-    /*
-    world.step(delta);
-    
-    // 更新Three.js对象位置
-    objects.forEach(obj => {
-      obj.mesh.position.copy(obj.body.position);
-      obj.mesh.quaternion.copy(obj.body.quaternion);
-    });
-    */
+    if (world) {
+        world.step(delta);
 
-    // 使用简单物理模拟
-    simplePhysics(delta);
+        // 更新Three.js对象位置
+        objects.forEach(obj => {
+            obj.mesh.position.copy(obj.body.position);
+            obj.mesh.quaternion.copy(obj.body.quaternion);
+        });
+    }
 
     // 渲染场景
     renderer.render(scene, camera);
@@ -305,9 +283,9 @@ const onWindowResize = () => {
 
 // 监听重力变化
 watch(gravity, () => {
-    // if (world) {
-    //   world.gravity.set(0, -gravity.value, 0);
-    // }
+    if (world) {
+        world.gravity.set(0, -gravity.value, 0);
+    }
 });
 
 // 监听弹性系数变化
@@ -317,11 +295,11 @@ watch(restitution, () => {
 
 // 生命周期钩子
 onMounted(() => {
+    // 首先初始化Three.js场景
     initThree();
-    // 延迟初始化物理引擎，确保DOM已加载
-    setTimeout(() => {
-        initPhysics();
-    }, 100);
+
+    // 然后初始化物理引擎
+    initPhysics();
 });
 
 onBeforeUnmount(() => {

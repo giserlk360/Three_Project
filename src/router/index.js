@@ -58,6 +58,11 @@ const routes = [
     name: "About",
     component: () => import("../views/tool/About.vue"),
   },
+  {
+    path: '/combat/geojsonmap',
+    name: 'GeoJsonMap',
+    component: () => import('../views/combat/GeoJsonMap.vue')
+  }
 ];
 
 const router = createRouter({

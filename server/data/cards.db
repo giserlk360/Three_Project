@@ -1,6 +1,7 @@
-{"id":3,"title":"相机控制","description":"学习如何使用不同类型的相机和控制器，实现交互式3D场景浏览和视角调整。","path":"/base/camera","date":"2023-03-05","status":"completed","color":"#e74c3c","_id":"9ngi4IYcvxC65nUG"}
-{"id":5,"title":"动画控制","description":"学习如何在Three.js中创建流畅的动画效果，控制物体的移动、旋转和缩放，实现复杂的动画序列。","path":"/base/animation","date":"2023-05-20","status":"completed","color":"#9b59b6","_id":"D5wWXqAyG0BMPJnT"}
-{"id":1,"title":"场景与几何体","description":"学习Three.js的基础知识，包括创建场景、相机、渲染器和基本几何体，探索不同的3D形状。","path":"/base/geometry","date":"2023-01-15","status":"completed","color":"#42b883","_id":"JvAfnbZW38GtKIS5"}
-{"id":2,"title":"材质","description":"深入了解Three.js中的各种材质，创建逼真的3D效果和表面属性。","path":"/base/material","date":"2023-02-10","status":"completed","color":"#3498db","_id":"RaKvkfUB69cr7W4Y"}
-{"id":6,"title":"物理引擎","description":"将物理引擎集成到Three.js场景中，模拟真实世界的物理效果，包括重力、碰撞和弹性等物理现象。","path":"/base/physics","date":"2023-07-08","status":"in-progress","color":"#2c3e50","_id":"j9X83iXycmIdzAxd"}
-{"id":4,"title":"光照系统","description":"掌握Three.js中的各种光源类型，包括环境光、点光源、方向光和聚光灯，创建真实的光影效果。","path":"/base/light","date":"2023-04-12","status":"completed","color":"#f39c12","_id":"vFnhbHUtN7XhoDRA"}
+{"id":1,"title":"场景与几何体","description":"学习Three.js的基础知识，包括创建场景、相机、渲染器和基本几何体，探索不同的3D形状。","path":"/base/geometry","date":"2025-02-15","status":"completed","color":"#42b883","_id":"DcIAqV9FdvQlc5oD"}
+{"id":5,"title":"动画控制","description":"学习如何在Three.js中创建流畅的动画效果，控制物体的移动、旋转和缩放，实现复杂的动画序列。","path":"/base/animation","date":"2025-03-20","status":"completed","color":"#9b59b6","_id":"Np16j0kNWBGl6Kzu"}
+{"id":4,"title":"光照系统","description":"掌握Three.js中的各种光源类型，包括环境光、点光源、方向光和聚光灯，创建真实的光影效果。","path":"/base/light","date":"2025-03-12","status":"completed","color":"#f39c12","_id":"SQjehxxXUTLHSgdC"}
+{"id":2,"title":"材质","description":"深入了解Three.js中的各种材质，创建逼真的3D效果和表面属性。","path":"/base/material","date":"2025-02-28","status":"completed","color":"#3498db","_id":"WTKv1lZziovu52I4"}
+{"id":6,"title":"物理引擎","description":"将物理引擎集成到Three.js场景中，模拟真实世界的物理效果，包括重力、碰撞和弹性等物理现象。","path":"/base/physics","date":"2025-04-08","status":"in-progress","color":"#2c3e50","_id":"aZ0d7oBjw00dUHs6"}
+{"id":3,"title":"相机控制","description":"学习如何使用不同类型的相机和控制器，实现交互式3D场景浏览和视角调整。","path":"/base/camera","date":"2025-03-05","status":"completed","color":"#e74c3c","_id":"zM392gLb6Lt8QDCM"}
+{"title":"行政区地图","description":"使用GeoJSON加载江苏省行政区地图，并通过Tween.js实现动画效果。","path":"/combat/geojsonmap","date":"2025-04-14","status":"in-progress","color":"#42b883","id":7,"_id":"K0SltkYVDJPojyrR"}
