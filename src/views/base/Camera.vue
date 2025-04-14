@@ -28,17 +28,20 @@
       </div>
       <div class="control-group">
         <label>相机位置X：</label>
-        <input type="range" v-model="cameraPosition.x" min="-10" max="10" step="0.1">
+        <input type="range" :value="cameraPosition.x" @input="e => cameraPosition.x = parseFloat(e.target.value)"
+          min="-10" max="10" step="0.1">
         <span>{{ cameraPosition.x.toFixed(1) }}</span>
       </div>
       <div class="control-group">
         <label>相机位置Y：</label>
-        <input type="range" v-model="cameraPosition.y" min="-10" max="10" step="0.1">
+        <input type="range" :value="cameraPosition.y" @input="e => cameraPosition.y = parseFloat(e.target.value)"
+          min="-10" max="10" step="0.1">
         <span>{{ cameraPosition.y.toFixed(1) }}</span>
       </div>
       <div class="control-group">
         <label>相机位置Z：</label>
-        <input type="range" v-model="cameraPosition.z" min="-10" max="10" step="0.1">
+        <input type="range" :value="cameraPosition.z" @input="e => cameraPosition.z = parseFloat(e.target.value)"
+          min="-10" max="10" step="0.1">
         <span>{{ cameraPosition.z.toFixed(1) }}</span>
       </div>
     </div>

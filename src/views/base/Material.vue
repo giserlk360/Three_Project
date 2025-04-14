@@ -1,41 +1,41 @@
 <template>
-    <div class="material-container">
-        <h1>材质示例</h1>
-        <div class="canvas-container" ref="canvasContainer"></div>
-        <div class="description">
-            <h2>场景说明</h2>
-            <p>这个示例展示了Three.js中的各种材质类型，包括基础材质、标准材质、物理材质等。</p>
-            <p>您可以通过控制面板切换不同的材质类型和属性。</p>
-        </div>
-        <div class="controls">
-            <h3>控制面板</h3>
-            <div class="control-group">
-                <label>材质类型：</label>
-                <select v-model="selectedMaterial">
-                    <option value="basic">基础材质</option>
-                    <option value="standard">标准材质</option>
-                    <option value="physical">物理材质</option>
-                    <option value="toon">卡通材质</option>
-                    <option value="normal">法线材质</option>
-                </select>
-            </div>
-            <div class="control-group">
-                <label>颜色：</label>
-                <input type="color" v-model="color">
-            </div>
-            <div class="control-group">
-                <label>金属度：</label>
-                <input type="range" v-model="metalness" min="0" max="1" step="0.01">
-                <span>{{ metalness }}</span>
-            </div>
-            <div class="control-group">
-                <label>粗糙度：</label>
-                <input type="range" v-model="roughness" min="0" max="1" step="0.01">
-                <span>{{ roughness }}</span>
-            </div>
-        </div>
-        <router-link to="/" class="back-link">返回首页</router-link>
+  <div class="material-container">
+    <h1>材质示例</h1>
+    <div class="canvas-container" ref="canvasContainer"></div>
+    <div class="description">
+      <h2>场景说明</h2>
+      <p>这个示例展示了Three.js中的各种材质类型，包括基础材质、标准材质、物理材质等。</p>
+      <p>您可以通过控制面板切换不同的材质类型和属性。</p>
     </div>
+    <div class="controls">
+      <h3>控制面板</h3>
+      <div class="control-group">
+        <label>材质类型：</label>
+        <select v-model="selectedMaterial">
+          <option value="basic">基础材质</option>
+          <option value="standard">标准材质</option>
+          <option value="physical">物理材质</option>
+          <option value="toon">卡通材质</option>
+          <option value="normal">法线材质</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label>颜色：</label>
+        <input type="color" v-model="color" class="color-input">
+      </div>
+      <div class="control-group">
+        <label>金属度：</label>
+        <input type="range" v-model="metalness" min="0" max="1" step="0.01">
+        <span>{{ metalness }}</span>
+      </div>
+      <div class="control-group">
+        <label>粗糙度：</label>
+        <input type="range" v-model="roughness" min="0" max="1" step="0.01">
+        <span>{{ roughness }}</span>
+      </div>
+    </div>
+    <router-link to="/" class="back-link">返回首页</router-link>
+  </div>
 </template>
 
 <script setup>
@@ -73,7 +73,7 @@ const initThree = () => {
 
   // 添加光源
   light = new THREE.DirectionalLight(0xffffff, 1);
-  light.position.set(1, 1, 1);
+  light.position.set(1, 1, 1); // 光源位置 方向从右上前方（正 X、正 Y、正 Z）照射
   scene.add(light);
 
   // 添加环境光
@@ -109,39 +109,39 @@ const createMaterial = () => {
   let material;
 
   switch (selectedMaterial.value) {
-  case 'basic':
-    material = new THREE.MeshBasicMaterial({
-      color: colorValue
-    });
-    break;
-  case 'standard':
-    material = new THREE.MeshStandardMaterial({
-      color: colorValue,
-      metalness: metalness.value,
-      roughness: roughness.value
-    });
-    break;
-  case 'physical':
-    material = new THREE.MeshPhysicalMaterial({
-      color: colorValue,
-      metalness: metalness.value,
-      roughness: roughness.value,
-      clearcoat: 0.5,
-      clearcoatRoughness: 0.3
-    });
-    break;
-  case 'toon':
-    material = new THREE.MeshToonMaterial({
-      color: colorValue
-    });
-    break;
-  case 'normal':
-    material = new THREE.MeshNormalMaterial();
-    break;
-  default:
-    material = new THREE.MeshBasicMaterial({
-      color: colorValue
-    });
+    case 'basic':
+      material = new THREE.MeshBasicMaterial({
+        color: colorValue
+      });
+      break;
+    case 'standard':
+      material = new THREE.MeshStandardMaterial({
+        color: colorValue,
+        metalness: metalness.value,
+        roughness: roughness.value
+      });
+      break;
+    case 'physical':
+      material = new THREE.MeshPhysicalMaterial({
+        color: colorValue,
+        metalness: metalness.value,
+        roughness: roughness.value,
+        clearcoat: 0.5,
+        clearcoatRoughness: 0.3
+      });
+      break;
+    case 'toon':
+      material = new THREE.MeshToonMaterial({
+        color: colorValue
+      });
+      break;
+    case 'normal':
+      material = new THREE.MeshNormalMaterial();
+      break;
+    default:
+      material = new THREE.MeshBasicMaterial({
+        color: colorValue
+      });
   }
 
   // 创建网格
@@ -226,93 +226,93 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .material-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 h1 {
-    font-size: 2.5rem;
-    color: #42b883;
-    margin-bottom: 1.5rem;
-    text-align: center;
+  font-size: 2.5rem;
+  color: #42b883;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .canvas-container {
-    width: 100%;
-    height: 400px;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .description {
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 h2 {
-    font-size: 1.8rem;
-    color: #35495e;
-    margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #35495e;
+  margin-bottom: 1rem;
 }
 
 p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 .controls {
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 h3 {
-    font-size: 1.5rem;
-    color: #35495e;
-    margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #35495e;
+  margin-bottom: 1rem;
 }
 
 .control-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 label {
-    width: 120px;
-    font-weight: 500;
+  width: 120px;
+  font-weight: 500;
 }
 
 select,
 input[type="color"] {
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
 }
 
 input[type="range"] {
-    flex: 1;
-    margin: 0 1rem;
+  flex: 1;
+  margin: 0 1rem;
 }
 
 .back-link {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: #42b883;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: background-color 0.2s;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #42b883;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.2s;
 }
 
 .back-link:hover {
-    background-color: #35a472;
+  background-color: #35a472;
 }
 </style>

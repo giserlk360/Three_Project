@@ -82,7 +82,7 @@
                         </div>
                         <div class="form-group">
                             <label for="color">颜色</label>
-                            <input type="color" id="color" v-model="formData.color" required style="padding: 1px;">
+                            <input type="color" id="color" v-model="formData.color" required class="color-input">
                         </div>
                         <div class="form-actions">
                             <button type="button" class="btn cancel-btn" @click="closeModal">取消</button>

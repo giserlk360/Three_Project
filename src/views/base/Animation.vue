@@ -191,7 +191,7 @@ const animate = () => {
   }
 
   if (selectedAnimation.value === 'tween' && mesh) {
-    // 补间动画
+    // 补间动画 使用时间来控制动画 
     const time = Date.now() * 0.001;
     mesh.position.x = Math.sin(time) * 2;
     mesh.position.y = Math.cos(time) * 2;

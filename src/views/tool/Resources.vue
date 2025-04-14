@@ -10,7 +10,7 @@
                     <div class="resource-content">
                         <h3>Three.js官方文档</h3>
                         <p>最权威的Three.js开发指南和API参考。</p>
-                        <a href="https://threejs.org/docs/" target="_blank" class="resource-link">访问官方文档</a>
+                        <a href="https://threejs.org/docs/#api/zh" target="_blank" class="resource-link">访问官方文档</a>
                     </div>
                 </div>
                 <div class="resource-card">
