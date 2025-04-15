@@ -66,7 +66,7 @@
         </div>
 
         <div class="admin-link-container">
-            <router-link to="/admin" class="admin-link">进入管理后台</router-link>
+            <router-link to="/tool/admin" class="admin-link">进入管理后台</router-link>
         </div>
     </div>
 </template>

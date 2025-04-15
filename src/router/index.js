@@ -14,47 +14,47 @@ const routes = [
     component: Home,
   },
   {
-    path: "/geometry",
+    path: "/base/geometry",
     name: "Geometry",
     component: Geometry,
   },
   {
-    path: "/material",
+    path: "/base/material",
     name: "Material",
     component: Material,
   },
   {
-    path: "/light",
+    path: "/base/light",
     name: "Light",
     component: Light,
   },
   {
-    path: "/camera",
+    path: "/base/camera",
     name: "Camera",
     component: Camera,
   },
   {
-    path: "/animation",
+    path: "/base/animation",
     name: "Animation",
     component: Animation,
   },
   {
-    path: "/physics",
+    path: "/base/physics",
     name: "Physics",
     component: () => import("../views/base/Physics.vue"),
   },
   {
-    path: "/admin",
+    path: "/tool/admin",
     name: "Admin",
     component: Admin,
   },
   {
-    path: "/resources",
+    path: "/tool/resources",
     name: "Resources",
     component: () => import("../views/tool/Resources.vue"),
   },
   {
-    path: "/about",
+    path: "/tool/about",
     name: "About",
     component: () => import("../views/tool/About.vue"),
   },
@@ -62,6 +62,11 @@ const routes = [
     path: '/combat/geojsonmap',
     name: 'GeoJsonMap',
     component: () => import('../views/combat/GeoJsonMap.vue')
+  },
+  {
+    path: '/combat/starrysky',
+    name: 'StarrySky',
+    component: () => import('../views/combat/StarrySky.vue')
   }
 ];
 

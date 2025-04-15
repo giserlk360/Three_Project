@@ -39,9 +39,9 @@ const menuGroups = [
     isDropdown: true,
     isOpen: false,
     links: [
-      { name: '数据管理', path: '/admin' },
-      { name: '学习资源', path: '/resources' },
-      { name: '关于项目', path: '/about' }
+      { name: '数据管理', path: '/tool/admin' },
+      { name: '学习资源', path: '/tool/resources' },
+      { name: '关于项目', path: '/tool/about' }
     ]
   }
 ];
