@@ -67,6 +67,11 @@ const routes = [
     path: '/combat/starrysky',
     name: 'StarrySky',
     component: () => import('../views/combat/StarrySky.vue')
+  },
+  {
+    path: '/combat/buildingmodel',
+    name: 'BuildingModel',
+    component: () => import('../views/combat/BuildingModel.vue')
   }
 ];
 

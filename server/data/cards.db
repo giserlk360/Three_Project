@@ -6,3 +6,4 @@
 {"id":2,"title":"材质","description":"深入了解Three.js中的各种材质，创建逼真的3D效果和表面属性。","path":"/base/material","date":"2025-02-28","status":"completed","color":"#3498db","_id":"WTKv1lZziovu52I4"}
 {"id":6,"title":"物理引擎","description":"将物理引擎集成到Three.js场景中，模拟真实世界的物理效果，包括重力、碰撞和弹性等物理现象。","path":"/base/physics","date":"2025-04-08","status":"completed","color":"#2c3e50","_id":"aZ0d7oBjw00dUHs6"}
 {"id":3,"title":"相机控制","description":"学习如何使用不同类型的相机和控制器，实现交互式3D场景浏览和视角调整。","path":"/base/camera","date":"2025-03-05","status":"completed","color":"#e74c3c","_id":"zM392gLb6Lt8QDCM"}
+{"title":"房屋模型","description":"加载房屋模型，gltf格式","path":"/combat/buildingmodel","date":"2025-04-18","status":"in-progress","color":"#0d6a0b","id":9,"_id":"QoC8wz5d3V1Bz1M1"}
